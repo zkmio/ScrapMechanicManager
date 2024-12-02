@@ -1,21 +1,26 @@
-import { lazy } from 'solid-js';
+import { Component, lazy } from 'solid-js';
 import type { RouteDefinition } from 'solid-app-router';
 
-import Home from './pages/home';
-import AboutData from './pages/about.data';
+import { Packages } from './pages/packages';
+import { IconProps } from 'solid-icons';
+import { BiSolidDashboard } from 'solid-icons/bi';
+import { FaSolidSquarePlus } from 'solid-icons/fa';
 
-export const routes: RouteDefinition[] = [
+export type RouteEntry = {
+  label: string;
+  icon: Component<IconProps>;
+  component: Component<any>;
+}
+
+export const routes: RouteEntry[] = [
   {
-    path: '/',
-    component: Home,
+    label: 'Packages',
+    icon: BiSolidDashboard,
+    component: Packages,
   },
   {
-    path: '/about',
-    component: lazy(() => import('./pages/about')),
-    data: AboutData,
-  },
-  {
-    path: '**',
-    component: lazy(() => import('./errors/404')),
-  },
+    label: 'New',
+    icon: FaSolidSquarePlus,
+    component: lazy(() => import('./pages/create-package')),
+  }
 ];

@@ -1,3 +1,7 @@
+
+const { automanBasePlugin } = require("./tailwind.automan.base.js");
+const { automanColoredPlugin } = require("./tailwind.automan.colored");
+
 module.exports = {
   content: [
     "./packages/renderer/index.html",
@@ -6,5 +10,8 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    automanBasePlugin,
+    automanColoredPlugin,
+  ],
 }
